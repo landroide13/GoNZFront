@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { NzapiService } from '../services/nzapi.service';
 
 @Component({
@@ -9,7 +9,9 @@ import { NzapiService } from '../services/nzapi.service';
 export class AgentListComponent implements OnInit {
 
   agents:any = [];
-
+  selectedAgent = null;
+  agent:any;
+  
   constructor(private api: NzapiService) { }
 
   getAgents(){
@@ -25,6 +27,13 @@ export class AgentListComponent implements OnInit {
     this.getAgents()
   }
 
+  agentClicked(a: any){
+    console.log(a)
+    this.selectAgent = a
+  }
 
+  selectAgent(agent: any){
+    this.selectAgent = agent
+  }
 
 }
