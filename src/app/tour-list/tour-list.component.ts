@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { NzapiService } from '../services/nzapi.service';
 
 @Component({
@@ -8,7 +8,9 @@ import { NzapiService } from '../services/nzapi.service';
 })
 export class TourListComponent implements OnInit {
 
+
   tours:any = [];
+  tour: any;
 
   constructor(private api: NzapiService) { }
 
@@ -25,8 +27,13 @@ export class TourListComponent implements OnInit {
     this.getTours()
   }
 
+  tourClicked(t: any){
+    this.selectTour = t
+  }
 
-
+  selectTour(tour: any){
+    this.selectTour = tour
+  }
 
 
 }

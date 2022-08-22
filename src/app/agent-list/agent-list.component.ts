@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { NzapiService } from '../services/nzapi.service';
 
 @Component({

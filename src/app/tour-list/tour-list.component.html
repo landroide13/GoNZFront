@@ -13,7 +13,7 @@
                         <div class="card-body">
                           <h5 class="card-title">{{ to.name }}</h5>
                           <p class="card-text"></p>
-                          <a href="#" class="btn btn-success">Check Tour</a>
+                          <button class="btn btn-success" (click)="tourClicked(to)">Check Tour</button>
                         </div>
                       </div>
                 </li>
@@ -23,7 +23,7 @@
 
         <div class="col-md-8">
 
-            <app-tour-details></app-tour-details>
+            <app-tour-details [tour]="this.selectTour"></app-tour-details>
             
         </div>
     
