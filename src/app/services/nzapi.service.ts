@@ -23,7 +23,7 @@ export class NzapiService {
   }
 
   getTours(){
-
+    return this.http.get(this.url + this.tour)
   }
 
   getAgent(id: any){

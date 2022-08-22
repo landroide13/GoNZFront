@@ -8,11 +8,21 @@ import { NzapiService } from '../services/nzapi.service';
 })
 export class TourListComponent implements OnInit {
 
-  tours: any[] = [];
+  tours:any = [];
 
   constructor(private api: NzapiService) { }
 
-  ngOnInit(): void {
+  getTours(){
+    this.api.getTours().subscribe(
+      data => {
+        this.tours = data
+      },
+      err =>console.log(err)
+    )
+  }
+
+  ngOnInit(){
+    this.getTours()
   }
 
 
