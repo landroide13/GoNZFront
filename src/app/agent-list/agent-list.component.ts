@@ -8,11 +8,21 @@ import { NzapiService } from '../services/nzapi.service';
 })
 export class AgentListComponent implements OnInit {
 
-  agents: any[] = [];
+  agents:any = [];
 
   constructor(private api: NzapiService) { }
 
-  ngOnInit(): void {
+  getAgents(){
+    this.api.getAgents().subscribe(
+      data => {
+        this.agents = data
+      },
+      err =>console.log(err)
+    )
+  }
+
+  ngOnInit(){
+    this.getAgents()
   }
 
 
