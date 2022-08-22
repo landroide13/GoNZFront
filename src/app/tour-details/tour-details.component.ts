@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TourDetailsComponent implements OnInit {
 
 
-  @Input() tour: any;
+  @Input() tour: any = null;
 
   constructor() { }
 

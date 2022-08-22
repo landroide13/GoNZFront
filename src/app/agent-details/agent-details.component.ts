@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AgentDetailsComponent implements OnInit {
 
-  @Input() agent: any;
+  @Input() agent: any = null;
 
   constructor() { }
 

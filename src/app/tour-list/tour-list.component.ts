@@ -8,7 +8,6 @@ import { NzapiService } from '../services/nzapi.service';
 })
 export class TourListComponent implements OnInit {
 
-
   tours:any = [];
   tour: any;
 
@@ -28,12 +27,13 @@ export class TourListComponent implements OnInit {
   }
 
   tourClicked(t: any){
+    console.log(t)
     this.selectTour = t
   }
 
   selectTour(tour: any){
     this.selectTour = tour
   }
-
+  
 
 }
