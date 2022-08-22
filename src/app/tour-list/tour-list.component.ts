@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NzapiService } from '../services/nzapi.service';
 
 @Component({
   selector: 'app-tour-list',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TourListComponent implements OnInit {
 
-  constructor() { }
+  tours: any[] = [];
+
+  constructor(private api: NzapiService) { }
 
   ngOnInit(): void {
   }
+
+
+
+
 
 }

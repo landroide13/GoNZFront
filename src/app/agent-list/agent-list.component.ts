@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NzapiService } from '../services/nzapi.service';
 
 @Component({
   selector: 'app-agent-list',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AgentListComponent implements OnInit {
 
-  constructor() { }
+  agents: any[] = [];
+
+  constructor(private api: NzapiService) { }
 
   ngOnInit(): void {
   }
+
+
 
 }
