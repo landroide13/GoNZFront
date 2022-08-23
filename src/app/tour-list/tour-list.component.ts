@@ -10,6 +10,7 @@ export class TourListComponent implements OnInit {
 
   tours:any = [];
   tour: any;
+  show = false;
 
   constructor(private api: NzapiService) { }
 
@@ -28,10 +29,11 @@ export class TourListComponent implements OnInit {
 
   tourClicked(t: any){
     console.log(t)
+    this.show = !this.show
     this.selectTour = t
   }
 
-  selectTour(tour: any){
+  selectTour(tour: any){ 
     this.selectTour = tour
   }
   

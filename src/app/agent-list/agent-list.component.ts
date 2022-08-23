@@ -11,6 +11,7 @@ export class AgentListComponent implements OnInit {
   agents:any = [];
   selectedAgent = null;
   agent:any;
+  show = false;
   
   constructor(private api: NzapiService) { }
 
@@ -28,7 +29,8 @@ export class AgentListComponent implements OnInit {
   }
 
   agentClicked(a: any){
-    console.log(a)
+    console.log(a);
+    this.show = !this.show;
     this.selectAgent = a
   }
 

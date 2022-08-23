@@ -1,12 +1,12 @@
 
 <h3 class="text-center mt-3">Tour List</h3>
 
-<div class="mt-3 offset-md-2">
+<div class="mt-3">
 
 
-    <div class="row d-flex align-items-center justify-content-center">
+    <div class="d-flex flex-row  justify-content-around">
 
-        <div class="col-md-4">
+        <div class="col-md-4 d-flex flex-column">
 
             <ul class="mt-5" *ngFor="let to of tours">
                 <li>
@@ -18,11 +18,11 @@
                         </div>
                       </div>
                 </li>
-            </ul>
+            </ul> 
 
         </div>    
 
-        <div class="col-md-8">
+        <div class="col-md-6" *ngIf="show">
 
             <app-tour-details [tour]="this.selectTour"></app-tour-details>
             
