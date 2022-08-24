@@ -12,6 +12,7 @@ export class NzapiService {
 
   agent = 'api/agents/'
   tour = 'api/tours/'
+  user = 'api/users/'
 
   //token = this.cookie.get('go-token');
 
@@ -24,15 +25,15 @@ export class NzapiService {
 
 
   getAgents(){
-    return this.http.get(this.url + this.agent , {headers: this.headers})
+    return this.http.get(this.url + this.agent,{headers: this.headers})
   }
 
   getTours(){
-    return this.http.get(this.url + this.tour , {headers: this.headers})
+    return this.http.get(this.url + this.tour, {headers: this.headers})
   }
 
-  getAgent(id: any){
-
+  getUsers(){
+    return this.http.get(this.url + this.user, {headers: this.headers})
   }
 
   getTour(id: any){
@@ -42,6 +43,11 @@ export class NzapiService {
   loginUser(authData: any){
     const body = JSON.stringify(authData);
     return this.http.post(`${this.url}auth/`, body, {headers: this.headers})
+  }
+
+  registerUser(authData: any){
+    const body = JSON.stringify(authData);
+    return this.http.post(`${this.url}api/users/`, body, {headers: this.headers})
   }
 
   getAuthHeaders(){

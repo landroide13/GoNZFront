@@ -13,6 +13,8 @@ export class AuthComponent implements OnInit {
 
   constructor(private api: NzapiService, private cookie: CookieService, private router: Router) { }
 
+  registerMode = false;
+
   authForm = new FormGroup({
     username: new FormControl(''),
     password: new FormControl('')
@@ -26,11 +28,27 @@ export class AuthComponent implements OnInit {
   }   
 
   saveForm(){
+    if(!this.registerMode){
+      this.loginU()
+    }else{
+      console.log(this.authForm.value)
+      this.api.registerUser(this.authForm.value).subscribe(
+        res => {
+          console.log(res),
+          this.loginU()
+        },
+        err => console.log(err)
+      )
+    }
+  }
+
+  loginU(){
     console.log(this.authForm.value)
     this.api.loginUser(this.authForm.value).subscribe(
       (res: any) => {
         console.log(res),
-        this.cookie.set('go-token', res.token)
+        this.cookie.set('go-token', res.token),
+        this.router.navigate(['/agents'])
       },
       err => console.log(err)
     )
