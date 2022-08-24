@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { NzapiService } from '../services/nzapi.service';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -8,19 +11,29 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class AuthComponent implements OnInit {
 
-  constructor() { }
+  constructor(private api: NzapiService, private cookie: CookieService, private router: Router) { }
 
   authForm = new FormGroup({
-    firstname: new FormControl(''),
-    lastname: new FormControl(''),
+    username: new FormControl(''),
     password: new FormControl('')
   })
 
-  ngOnInit(): void {
-  }  
+  ngOnInit() {
+    const gotoken = this.cookie.get('go-token')
+    if(gotoken){
+      this.router.navigate(['/agents'])
+    }
+  }   
 
   saveForm(){
-
+    console.log(this.authForm.value)
+    this.api.loginUser(this.authForm.value).subscribe(
+      (res: any) => {
+        console.log(res),
+        this.cookie.set('go-token', res.token)
+      },
+      err => console.log(err)
+    )
   }
 
 }

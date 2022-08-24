@@ -1,5 +1,8 @@
 import { Component, OnInit} from '@angular/core';
-import { NzapiService } from '../services/nzapi.service';
+import { NzapiService } from '../services/nzapi.service'; 
+
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-agent-list',
@@ -13,7 +16,7 @@ export class AgentListComponent implements OnInit {
   agent:any;
   show = false;
   
-  constructor(private api: NzapiService) { }
+  constructor(private api: NzapiService, private cookie: CookieService, private router: Router) { }
 
   getAgents(){
     this.api.getAgents().subscribe(
@@ -25,7 +28,12 @@ export class AgentListComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.getAgents()
+    const gotoken = this.cookie.get('go-token')
+    if(!gotoken){
+      this.router.navigate(['/auth'])
+    }else{
+      this.getAgents()
+    }
   }
 
   agentClicked(a: any){

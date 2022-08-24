@@ -1,6 +1,10 @@
 import { Component, OnInit} from '@angular/core';
 import { NzapiService } from '../services/nzapi.service';
 
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+
+
 @Component({
   selector: 'app-tour-list',
   templateUrl: './tour-list.component.html',
@@ -12,7 +16,7 @@ export class TourListComponent implements OnInit {
   tour: any;
   show = false;
 
-  constructor(private api: NzapiService) { }
+  constructor(private api: NzapiService, private cookie: CookieService, private router: Router) { }
 
   getTours(){
     this.api.getTours().subscribe(
@@ -24,7 +28,12 @@ export class TourListComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.getTours()
+    const gotoken = this.cookie.get('go-token')
+    if(!gotoken){
+      this.router.navigate(['/auth'])
+    }else{
+      this.getTours()
+    }
   }
 
   tourClicked(t: any){

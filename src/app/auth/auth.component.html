@@ -5,22 +5,16 @@
 
         <div class="card">
 
-            <h3 class="text-center mt-3">Sing Up</h3>
+            <h3 class="text-center mt-3">Login</h3>
 
-            <div class="card-body">
+            <div class="card-body"> 
 
                 <form action="" [formGroup]="authForm" (submit)="saveForm()">
 
                     <div class="mb-3">
-                        <label for="title" class="form-label">First Name</label>
-                        <input type="username" class="form-control" formControlName="firstname">
+                        <label for="title" class="form-label">User Name</label>
+                        <input type="username" class="form-control" formControlName="username">
                     </div>
-
-                    <div class="mb-3">
-                        <label for="title" class="form-label">Last Name</label>
-                        <input type="username" class="form-control" formControlName="lastname">
-                    </div>
-
 
                     <div class="mb-3"> 
                         <label for="description" class="form-label">Password</label>
@@ -28,7 +22,7 @@
                     </div>
 
                     <button type="submit" class="btn btn-success">
-                        Sign Up 
+                        Login
                     </button>
 
                 </form>

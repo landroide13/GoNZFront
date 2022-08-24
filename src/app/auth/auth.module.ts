@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AuthComponent } from './auth.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -11,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule, 
     ReactiveFormsModule
-  ]
+  ],
+  providers:[CookieService]
 })
 export class AuthModule { }
